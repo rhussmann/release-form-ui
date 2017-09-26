@@ -1,0 +1,11 @@
+# Emacs
+*~
+
+# Generated files
+npm-debug.log
+
+# Node
+node_modules/
+
+# Generated source
+build/

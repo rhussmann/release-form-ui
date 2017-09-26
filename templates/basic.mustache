@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/form.css" rel="stylesheet">
+    <script type="text/javascript" src="script/signature_pad.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="script/form.js"></script>
+    <title>Form</title>
+  </head>
+  <body>
+    <div class="container">
+      <!--div class="row"-->
+        <form method="POST" action="/target">
+          <div class="input-group">
+            <label for="first-name">Name</label>
+            <input type="text" id="first-name" class="form-control" name="name[first]" placeholder="First" value="{{name.first}}">
+            <input type="text" id="last-name" class="form-control" name="name[last]" placeholder="Last" value="{{name.last}}">
+          </div>
+          <div class="input-group">
+            <label>Address</label>
+            <input type="text" placeholder="Street Address" class="form-control" name="address[line1]" value="{{address.line1}}">
+            <input type="text" placeholder="Street Address Line 2" class="form-control" name="address[line2]" value="{{address.line2}}">
+            <input type="text" placeholder="City" class="form-control" name="address[city]" value="{{address.city}}">
+            <select class="form-control" id="state" name="address[state]" value="{{address.state}}">
+              {{#states}}
+              <option value="{{abbr}}" {{#selected}}selected{{/selected}}>{{name}}</option>
+              {{/states}}
+            </select>
+            <input type="text" placeholder="ZIP" class="form-control" name="address[zip]" value="{{address.zip}}">
+          </div>
+          <div class="input-group">
+            <label for="phone">Phone</label>
+            <input type="text" class="form-control" id="phone" placeholder="Phone number" name="contact[phone]" value="{{contact.phone}}">
+          </div>
+          <div class="input-group">
+            <label for="email-input">
+              Email</label>
+<input type="text" id="email-input" class="form-control" placeholder="email" name="contact[email]" value="{{contact.email}}">
+</div>
+<div class="input-group">
+  <label>Now that you've seen your boudoir photos let's chat about using your gorgeous images online. I primarily post images that are on the PG-rated side. You look amazing in these photos, and I would love to share them with the world. You will never be named or tagged. So, what do you think?</label>
+  <!--label>Once you view your boudoir gallery you will see that the images are
+    provocative but classy, tasteful, & do not cross over the line of nudity (on
+    Facebook). Please check all that apply with preference of your photo usage below. This is considered your print/publish release for Company to use your photos as specified below. If you don't mind that Company uses tastefully nude photos on its website ONLY please specify which photos in the "other" section on A.</label-->
+  <label>A. Post any photos! Just make me look good!</label>
+  <div class="checkbox">
+    <label>
+      <input type="checkbox" name="usage[any][facebook]" {{#usage.any.facebook}}checked{{/usage.any.facebook}}>
+      Facebook
+    </label>
+  </div>
+  <div class="checkbox">
+    <label>
+      <input type="checkbox" name="usage[any][blog]" {{#usage.any.blog}}checked{{/usage.any.blog}}>
+      Blog
+    </label>
+  </div>
+  <div class="checkbox">
+    <label>
+      <input type="checkbox" name="usage[any][instagram]" {{#usage.any.instagram}}checked{{/usage.any.instagram}}>
+      Instagram
+    </label>
+  </div>
+  <div class="checkbox">
+    <label>
+      <input type="checkbox" name="usage[any][pinterest]" {{#usage.any.pinterest}}checked{{/usage.any.pinterest}}>
+      Pinterest
+    </label>
+  </div>
+  <div class="checkbox">
+    <label>
+      <input type="checkbox" name="usage[any][other]" {{#usage.any.other}}checked{{/usage.any.other}}>
+      Other
+    </label>
+  </div>
+  <input type="text" placeholder="Other" class="form-control">
+  <label>B. You may post anonymous body shots, no face, please.</label>
+  <div class="checkbox">
+    <label>
+      <input type="checkbox" name="usage[ambiguous][facebook]" {{#usage.ambiguous.facebook}}checked{{/usage.ambiguous.facebook}}>
+      Facebook
+    </label>
+  </div>
+  <div class="checkbox">
+    <label>
+      <input type="checkbox" name="usage[ambiguous][blog]" {{#usage.ambiguous.blog}}checked{{/usage.ambiguous.blog}}>
+      Blog
+    </label>
+  </div>
+  <div class="checkbox">
+    <label>
+      <input type="checkbox" name="usage[ambiguous][instagram]" {{#usage.ambiguous.instagram}}checked{{/usage.ambiguous.instagram}}>
+      Instagram
+    </label>
+  </div>
+  <div class="checkbox">
+    <label>
+      <input type="checkbox" name="usage[ambiguous][pinterest]" {{#usage.ambiguous.pinterest}}checked{{/usage.ambiguous.pinterest}}>
+      Pinterest
+    </label>
+  </div>
+  <div class="checkbox">
+    <label>
+      <input type="checkbox" name="usage[ambiguous][other]" {{#usage.ambiguous.other}}checked{{/usage.ambiguous.other}}>
+      Other
+    </label>
+  </div>
+  <input type="text" placeholder="Other" class="form-control" name="ambiguousOtherReason" value="{{ambiguousOtherReason}}">
+</div>
+<div class="input-group">
+  <label for="photo-list">Company may use the following images from my boudoir session ONLY: (please list specific image numbers below)</label>
+  <textarea class="form-control" id="photo-list"></textarea>
+</div>
+<div class="input-group">
+  <label>**I do not wish for ANY of my photos to be released and/or used on ANY social media. *Typically reserved for government employees but please let me know if you prefer this over any other option listed above*</label>
+  <div class="checkbox">
+    <label>
+      <input type="checkbox" name="usage[publication][none]" {{#usage.publication.none}}checked{{/usage.publication.none}}>
+      No publication at All!
+    </label>
+  </div>
+  <div class="checkbox">
+    <label>
+      <input type="checkbox" name="usage[publication][printOnly]" {{#usage.publication.printOnly}}checked{{/usage.publication.printOnly}}>
+      No social publication (FB, blog, etc) but print (books) okay for studio use
+    </label>
+  </div>
+</div>
+<div class="input-group">
+  <label>May I use your photos for (check all that apply):</label>
+  <div class="checkbox">
+    <label>
+      <input type="checkbox" name="usage[promotion][advertising]" {{#usage.promotion.advertising}}checked{{/usage.promotion.advertising}}>
+      Advertising
+    </label>
+  </div>
+  <div class="checkbox">
+    <label>
+      <input type="checkbox" name="usage[promotion][publication]" {{#usage.promotion.publication}}checked{{/usage.promotion.publication}}>
+      Submit for online/print magazines or blogs
+    </label>
+  </div>
+  <div class="checkbox">
+    <label>
+      <input type="checkbox" name="usage[promotion][competitions]" {{#usage.promotion.competitions}}checked{{/usage.promotion.competitions}}>
+      Enter into Professional Competitions
+    </label>
+  </div>
+</div>
+<div class="input-group">
+  <label for="experience">We are so glad that you chose As You Are for your boudoir photos! Boudoir photography is a magical and intimate thing, and we appreciate your trust. We enjoyed getting to know you and learning a little about your story. We'd love to share a bit of your story and boudoir experience on the blog. We do this in the hopes of encouraging women who are hesitant to take that first step. Please share anything you would be okay with us including in a blog post that you think would inspire other ladies to give themselves the gift of boudoir. Thank you so much!</label>
+  <textarea class="form-control" id="experience" placeholder="Share your experience here..."></textarea>
+</div>
+<div class="input-group">
+  <label>Please sign below. On a computer, click-and-drag within the box below. On a mobile phone or tablet, draw your signature in the box below with your finger.</label>
+  <div class="row">
+    <canvas id="canvas">
+    </canvas>
+  </div>
+  <input type="hidden" id="signature-text" name="signatureData" value="{{signatureData}}">
+  <div class="row">
+    <button type="button" id="clear-button" class="btn btn-default" onclick="SignatureController.clearSignatures()">
+      Clear
+    </button>
+    <button type="button" id="submit-button" class="btn btn-default" onclick="SignatureController.submit()">
+      Submit
+    </button>
+  </div>
+</div>
+</form>
+<!--/div-->
+</div>
+</body>
+</html>
