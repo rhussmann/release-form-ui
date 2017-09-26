@@ -29,10 +29,15 @@ module.exports = function(grunt) {
           path: './build'
         }
       }
+    },
+    watch: {
+      files: ['./css/*', './script/*', './templates/*'],
+      tasks: ['mustache_render', 'copy']
     }
   });
 
   grunt.loadNpmTasks('grunt-contrib-copy');
+  grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-mustache-render');
   grunt.loadNpmTasks('grunt-serve');
   grunt.registerTask('default', ['mustache_render', 'copy']);
