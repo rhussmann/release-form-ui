@@ -1,0 +1,17 @@
+#!/usr/bin/env groovy
+
+pipeline {
+  agent any
+
+  stages{
+    stage('Build') {
+      steps {
+        withCredentials([usernamePassword(credentialsId: 'beta-rickyandjodi-deploy',
+          passwordVariable: 'AWS_SECRET_ACCESS_KEY',
+          usernameVariable: 'AWS_ACCESS_KEY_ID')]) {
+          sh 'util/deploy.sh'
+        }
+      }
+    }
+  }
+}
