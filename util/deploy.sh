@@ -9,4 +9,3 @@ aws s3api put-bucket-policy --bucket form.asyouareboudoir.com \
     --policy file://${PWD}/util/policy.json
 
 aws s3 sync ./build s3://form.asyouareboudoir.com/
-aws s3 cp ./templates/basic.mustache s3://form.asyouareboudoir.com/

@@ -19,6 +19,10 @@ module.exports = function(grunt) {
           {
             src: 'script/*',
             dest: 'build/'
+          },
+          {
+            src: 'templates/basic.mustache',
+            dest: 'build/basic.mustache'
           }
         ]
       }
