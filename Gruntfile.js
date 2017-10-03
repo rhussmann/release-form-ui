@@ -23,7 +23,12 @@ module.exports = function(grunt) {
           {
             src: 'templates/basic.mustache',
             dest: 'build/basic.mustache'
+          },
+          {
+            src: 'robots.txt',
+            dest: 'build/robots.txt'
           }
+
         ]
       }
     },
